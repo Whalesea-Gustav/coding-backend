@@ -59,6 +59,40 @@ public:
 
         return dfs(nums.size() -1 , target);
     }
+
+    int findTargetSumWays2(vector<int>& nums, int target) {
+        int n = accumulate(nums.begin(), nums.end(), 0);
+        //pos = p, neg = n - p
+        // p - (n-p) = target
+        // p = (target+n) % 2
+
+        target = target + n;
+
+        if (target < 0 || target % 2 == 1) return 0;
+
+        target = target / 2;
+
+        vector<vector<int>> dp(nums.size()+1, vector<int>(target+1, 0));
+
+        dp[0][0] = 1;
+
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            for (int c = 0; c <= target; ++c)
+            {
+                if (c < nums[i])
+                {
+                    dp[i+1][c] = dp[i][c];
+                }
+                else
+                {
+                    dp[i+1][c] = dp[i][c] + dp[i][c-nums[i]];
+                }
+            }
+        }
+
+        return dp[nums.size()][target];
+    }
 };
 
 #define REGISTER(func) exc.registerMemberFunction(#func, &Solution::func);
@@ -67,7 +101,7 @@ int main() {
     string input_path = STRINGIFY(INPUT_DIR) "offerII-102.txt";
     Excecutor<Solution, true> exc(input_path);
     exc.instance = exc.createInstance<void>();
-    REGISTER(findTargetSumWays)
+    REGISTER(findTargetSumWays2)
 
     exc.run();
 }
