@@ -7,7 +7,7 @@ using namespace std;
 
 class Solution {
 public:
-    int findTargetSumWays(vector<int>& nums, int target) {
+    int findTargetSumWaysMEMO(vector<int>& nums, int target) {
         int n = accumulate(nums.begin(), nums.end(), 0);
         //pos = p, neg = n - p
         // p - (n-p) = target
@@ -60,7 +60,7 @@ public:
         return dfs(nums.size() -1 , target);
     }
 
-    int findTargetSumWays2(vector<int>& nums, int target) {
+    int findTargetSumWaysDP(vector<int>& nums, int target) {
         int n = accumulate(nums.begin(), nums.end(), 0);
         //pos = p, neg = n - p
         // p - (n-p) = target
@@ -93,6 +93,40 @@ public:
 
         return dp[nums.size()][target];
     }
+
+    int findTargetSumWaysDP_space_optimization(vector<int>& nums, int target) {
+        int n = accumulate(nums.begin(), nums.end(), 0);
+        //pos = p, neg = n - p
+        // p - (n-p) = target
+        // p = (target+n) % 2
+
+        target = target + n;
+
+        if (target < 0 || target % 2 == 1) return 0;
+
+        target = target / 2;
+
+        vector<vector<int>> dp(nums.size()+1, vector<int>(target+1, 0));
+        vector<int> dp_op(target+1, 0);
+        dp_op[0] = 1;
+
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            for (int c = target; c >= 0; --c)
+            {
+                if (c < nums[i])
+                {
+                    dp_op[c] = dp_op[c];
+                }
+                else
+                {
+                    dp_op[c] = dp_op[c] + dp_op[c-nums[i]];
+                }
+            }
+        }
+
+        return dp_op[target];
+    }
 };
 
 #define REGISTER(func) exc.registerMemberFunction(#func, &Solution::func);
@@ -101,7 +135,7 @@ int main() {
     string input_path = STRINGIFY(INPUT_DIR) "offerII-102.txt";
     Excecutor<Solution, true> exc(input_path);
     exc.instance = exc.createInstance<void>();
-    REGISTER(findTargetSumWays2)
+    REGISTER(findTargetSumWaysDP_space_optimization)
 
     exc.run();
 }
