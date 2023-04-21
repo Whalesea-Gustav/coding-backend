@@ -78,7 +78,7 @@ int main() {
     Excecutor<Solution, true> exc(input_path);
     exc.instance = exc.createInstance<void>();
     //REGISTER(coinChangeMEMO)
-    REGISTER(maxProfile_dp_space_optimization)
+    REGISTER(maxProfit_dp_optimization)
 
     exc.run();
 }
