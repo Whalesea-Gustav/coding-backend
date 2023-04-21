@@ -21,7 +21,7 @@ using namespace std;
 
 class Solution {
 public:
-    bool isMatch(const string s, const string p) {
+    bool isMatch_memo(const string s, const string p) {
         int n = s.size();
         int m = p.size();
 
@@ -82,6 +82,60 @@ public:
 
         return dfs(n-1, m-1);
     }
+
+    bool isMatch_dp(const string s, const string p) {
+        int n = s.size();
+        int m = p.size();
+
+        unordered_map<pair<int, int>, bool> memo;
+
+        vector<vector<bool>> dp(n+1, vector<bool>(m+1, false));
+        dp[0][0] = true;
+
+        for (int j = 0; j < m-1;)
+        {
+            if (p[j+1] == '*')
+            {
+                dp[0][j+2] = true;
+                j = j + 2;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                if (s[i] == p[j] || p[j] == '.')
+                {
+                    dp[i+1][j+1] = dp[i][j];
+                }
+                else if (p[j] == '*')
+                {
+                    bool res1 = dp[i+1][j-1];
+
+                    bool res2 = false, res3 = false;
+
+                    if (s[i] == p[j-1] || p[j-1] == '.')
+                    {
+                        res2 = dp[i][j-1];
+                        res3 = dp[i][j+1];
+                    }
+
+                    dp[i+1][j+1] = res1 || res2 || res3;
+                }
+                else
+                {
+                    dp[i+1][j+1] = false;
+                }
+            }
+        }
+
+        return dp[n][m];
+    }
 };
 #define REGISTER(func) exc.registerMemberFunction(#func, &Solution::func);
 
@@ -89,7 +143,7 @@ int main() {
     string input_path = STRINGIFY(INPUT_DIR) "lcII-19.txt";
     Excecutor<Solution, true> exc(input_path);
     exc.instance = exc.createInstance<void>();
-    REGISTER(isMatch)
+    REGISTER(isMatch_dp)
 
     exc.run();
 }

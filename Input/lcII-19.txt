@@ -1,2 +1,2 @@
-"aaa"
-"ab*ac*a"
+"aab"
+"c*a*b"
