@@ -15,7 +15,7 @@ public:
 #define REGISTER(func) exc.registerMemberFunction(#func, &Solution::func);
 
 int main() {
-    string input_path = STRINGIFY(INPUT_DIR) "testcases.txt";
+    string input_path = STRINGIFY(INPUT_DIR) "lc-ID.txt";
     Excecutor<Solution, true> exc(input_path);
     exc.instance = exc.createInstance<void>();
     REGISTER(test)
