@@ -10,9 +10,10 @@ foreach (file ${files})
     # 将去掉后缀的文件名存入exe变量（executable的缩写，不是代表.exe）
     string(REGEX REPLACE "(.+).cpp$" "\\1" exe ${file})
     # 分别生成add_executable(<name> <source>)命令
-    add_executable(${exe} ${file})
+    set(cur_name "leetcode-debug-${exe}")
+    add_executable(${cur_name} ${file})
     #fmt support
-    target_link_libraries(${exe} fmt-header-only)
+    target_link_libraries(${cur_name} fmt-header-only)
 endforeach ()
 
 add_compile_definitions(INPUT_DIR=${MY_INPUT_DIR})

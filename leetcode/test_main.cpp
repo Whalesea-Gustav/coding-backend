@@ -12,7 +12,7 @@ using namespace std;
 #endif
 
 int main() {
-    std::cout << "Hello, Worl!" << std::endl;
+    std::cout << "Hello, World!" << std::endl;
 
     MY_LOG(fmt::print("234"));
 

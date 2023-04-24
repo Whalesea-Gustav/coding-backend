@@ -12,4 +12,6 @@ add_subdirectory(dependency/fmt EXCLUDE_FROM_ALL)
 
 add_subdirectory(leetcode)
 
+add_subdirectory(nowcoder)
+
 add_subdirectory(dependency/leetcode-debug)
