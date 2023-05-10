@@ -15,3 +15,5 @@ add_subdirectory(leetcode)
 add_subdirectory(nowcoder)
 
 add_subdirectory(dependency/leetcode-debug)
+
+add_subdirectory(test)
