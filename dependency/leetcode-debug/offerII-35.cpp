@@ -129,6 +129,28 @@ public:
 
         return head_new;
     }
+
+    Node* copyRandomListInPlaceRecovery(Node* head) {
+        if (head == nullptr) {
+            return nullptr;
+        }
+        for (Node* node = head; node != nullptr; node = node->next->next) {
+            Node* nodeNew = new Node(node->val);
+            nodeNew->next = node->next;
+            node->next = nodeNew;
+        }
+        for (Node* node = head; node != nullptr; node = node->next->next) {
+            Node* nodeNew = node->next;
+            nodeNew->random = (node->random != nullptr) ? node->random->next : nullptr;
+        }
+        Node* headNew = head->next;
+        for (Node* node = head; node != nullptr; node = node->next) {
+            Node* nodeNew = node->next;
+            node->next = node->next->next;
+            nodeNew->next = (nodeNew->next != nullptr) ? nodeNew->next->next : nullptr;
+        }
+        return headNew;
+    }
 };
 
 #define REGISTER(func) exc.registerMemberFunction(#func, &Solution::func);
