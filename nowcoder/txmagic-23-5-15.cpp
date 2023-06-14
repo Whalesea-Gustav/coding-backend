@@ -20,8 +20,17 @@ public:
 };
 
 int main() {
-    Solution s;
-    cout << "test file" << endl;
 
+    int a = 0;
+
+    auto f = [a=a]() -> void
+    {
+        return;
+    };
+
+    function<void()> test = f;
+
+    cout << sizeof(f) << endl;
+    cout << sizeof(test) << endl;
 
 }
