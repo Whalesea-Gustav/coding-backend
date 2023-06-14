@@ -14,3 +14,4 @@ _deps
 /.idea/
 /cmake-build-debug-savior-msvc2022/
 /cmake-build-debug-visual-studio/
+/cmake-build-debug/
