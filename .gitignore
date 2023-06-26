@@ -15,3 +15,5 @@ _deps
 /cmake-build-debug-savior-msvc2022/
 /cmake-build-debug-visual-studio/
 /cmake-build-debug/
+/cmake-build-debug-arch-clang/
+/cmake-build-debug-arch-g/
