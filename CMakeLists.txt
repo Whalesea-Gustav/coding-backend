@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(codeforce)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 set(MY_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(MY_INPUT_DIR "${MY_DIR}/input/")

@@ -18,11 +18,16 @@ void const_test1()
 }
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
 
+    uint32_t i;
+    cin >> i;
+    const uint32_t j = i;
+    uint32_t k = 10;
     const uint32_t in = 10;
 
     const_test1<in>();
+    const_test1<j>();
+    const_test1<k>();
 
     return 0;
 }
