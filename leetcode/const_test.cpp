@@ -26,7 +26,9 @@ int main() {
     const uint32_t in = 10;
 
     const_test1<in>();
+
     const_test1<j>();
+
     const_test1<k>();
 
     return 0;
