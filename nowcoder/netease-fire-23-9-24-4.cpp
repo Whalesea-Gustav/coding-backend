@@ -29,7 +29,7 @@ int main() {
         //atr, value
         grass_av.emplace_back(b, v);
     }
-    
+
     vector<vector<unordered_map<int, int>>> memo = vector<vector<unordered_map<int, int>>>(N, vector<unordered_map<int, int>>(K+1));
 
     function<pair<bool,int>(int,int,int)> dfs = [&](int id, int cnt, int num) -> pair<bool,int>
