@@ -12,7 +12,8 @@ foreach (file ${files})
     string(REGEX REPLACE "(.+).cpp$" "\\1" exe ${file})
     # 分别生成add_executable(<name> <source>)命令
     set(cur_name "leetcode-${exe}")
-    add_executable(${cur_name} ${file})
+    add_executable(${cur_name} ${file}
+            ../STL1W/UniquePtr.h)
     #fmt support
     target_link_libraries(${cur_name} fmt-header-only)
 endforeach ()
