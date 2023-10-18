@@ -18,3 +18,4 @@ _deps
 /cmake-build-debug-arch-clang/
 /cmake-build-debug-arch-g/
 /cmake-build-debug-vs22littleitx/
+/cmake-build-debug-visualstudio2022x86/
