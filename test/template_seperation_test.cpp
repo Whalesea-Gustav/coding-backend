@@ -18,5 +18,9 @@ int main()
     //template_sep_test<float> t3(100);
     //t3.print();
 
+    cout << template_add<float>(0.1f, 0.2f) << endl;
+    cout << template_add<int>(0, 1) << endl;
+    //cout << template_add<double>(0.1, 1.2) << endl;
+
     return 0;
 }

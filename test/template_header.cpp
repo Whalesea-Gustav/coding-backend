@@ -10,3 +10,11 @@ void template_sep_test<T>::print() {
 }
 
 
+template<typename T>
+T template_add(T a, T b)
+{
+    return a + b;
+}
+
+template float template_add<float>(float a, float b);
+template int template_add<int>(int a, int b);

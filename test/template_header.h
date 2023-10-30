@@ -14,3 +14,10 @@ public:
 
 template class template_sep_test<double>;
 template class template_sep_test<int>;
+
+
+template<typename T>
+T template_add(T a, T b);
+
+
+
