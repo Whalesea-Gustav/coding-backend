@@ -7,6 +7,40 @@ using namespace std;
 
 class Solution {
 public:
+
+    //horse
+    //ros
+    int minDistance_DP_23_11_2(string word1, string word2)
+    {
+        int n = word1.size();
+        int m = word2.size();
+
+        vector<vector<int>> memo(n, vector<int>(m, -1));
+
+        function<int(int,int)> dfs = [&](int i, int j) -> int
+        {
+            if(i < 0 && j < 0) return 0;
+            if(i < 0) return j + 1;
+            if(j < 0) return i + 1;
+
+            auto& res = memo[i][j];
+            if(res != -1) return res;
+
+            res = dfs(i-1, j) + 1;
+            res = min(res, dfs(i, j-1) + 1);
+            res = min(res, dfs(i-1, j-1) + 1);
+
+            if(word1[i] == word2[j])
+            {
+                res = min(res, dfs(i-1, j-1));
+            }
+
+            return res;
+        };
+
+        return dfs(n-1, m-1);
+    }
+
     int minDistance_DP(string word1, string word2) {
         int m = word1.size();
         int n = word2.size();
@@ -89,7 +123,7 @@ int main() {
     string input_path = STRINGIFY(INPUT_DIR) "lc-72.txt";
     Excecutor<Solution, true> exc(input_path);
     exc.instance = exc.createInstance<void>();
-    REGISTER(minDistance_DP_space_optimization)
+    REGISTER(minDistance_DP_23_11_2)
 
     exc.run();
 }
