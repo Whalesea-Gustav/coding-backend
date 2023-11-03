@@ -13,7 +13,8 @@ foreach (file ${files})
     # 分别生成add_executable(<name> <source>)命令
     set(cur_name "test-${exe}")
     add_executable(${cur_name} ${file}
-            template_header.cpp)
+            template_header.cpp
+            def_header.cpp)
     #fmt support
     target_link_libraries(${cur_name} fmt-header-only)
 endforeach ()
