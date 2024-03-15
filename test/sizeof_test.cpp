@@ -52,6 +52,7 @@ struct node4
 
 };
 
+int a_array[10] = {};
 
 int main(int argc, char* argv[]) {
     node1 test{};
@@ -62,4 +63,5 @@ int main(int argc, char* argv[]) {
     std::cout << sizeof (node3) << std::endl;
     std::cout << sizeof (node4) << std::endl;
 
+    std::cout << sizeof (a_array) << std::endl;
 }
