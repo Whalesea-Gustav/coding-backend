@@ -18,11 +18,15 @@ int main()
 
     p.replace_extension("jpg");
 
-    std::cout << "Full String:" << p.string() << std::endl;
+    std::cout << "Full String replace extension:" << p.string() << std::endl;
 
     p.replace_filename("hahahah");
 
-    std::cout << "Full String:" << p.string() << std::endl;
+    std::cout << "Full String replace filename:" << p.string() << std::endl;
+
+    p.replace_extension("mesh");
+
+    std::cout << "Full String replace extension:" << p.string() << std::endl;
 
    return 0;
 }
