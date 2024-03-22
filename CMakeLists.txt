@@ -18,4 +18,6 @@ add_subdirectory(dependency/leetcode-debug)
 
 add_subdirectory(test)
 
+add_subdirectory(utility)
+
 add_subdirectory(STL1W)
