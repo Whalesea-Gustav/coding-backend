@@ -21,3 +21,5 @@ add_subdirectory(test)
 add_subdirectory(utility)
 
 add_subdirectory(STL1W)
+
+add_subdirectory(Batch)
