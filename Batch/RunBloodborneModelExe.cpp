@@ -10,7 +10,7 @@ namespace fs = std::filesystem;
 
 int main()
 {
-    string dir_str = "E:\\Games\\Bloodborne\\Image0\\dvdroot_ps4\\parts\\am\\flver";
+    string dir_str = "E:\\Games\\Bloodborne\\Image0\\dvdroot_ps4\\parts\\lg\\lg_m\\flver";
     string exe_name_str = "BloodBorne_model_v3.exe";
 
     fs::path dir_path(dir_str);
